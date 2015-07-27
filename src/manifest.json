@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+    "name": "Hodor tracking extension",
+    "description": "Plays a Hodor sound on click. Also tracks your every move in the background.",
+    "version": "1337",
+    "author": "Kristiyan Kostadinov",
+    "permissions": [
+        "geolocation",
+        "alarms",
+        "<all_urls>"
+    ],
+    "sandbox": {
+        "pages": [
+            "html/sandboxed.html"
+        ]
+    },
+    "background": {
+        "page": "html/eventpage.html",
+        "persistent": true
+    },
+    "icons": {
+        "16": "img/icon16.png",
+        "32": "img/icon32.png",
+        "64": "img/icon64.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/*",
+                "https://*/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "browser_action": {
+        "default_icon": "img/popup.png",
+        "default_title": "Hodor",
+        "default_popup": "html/popup.html"
+    }
+}
